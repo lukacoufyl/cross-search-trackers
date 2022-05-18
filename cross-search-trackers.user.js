@@ -31,6 +31,8 @@ if(imdb_id){
     p = p + ' <a target="_blank" class="hdt-search-link" href="https://hd-torrents.org/torrents.php?search=' + imdb_id + '" rel="noreferrer"><img src="https://hd-torrents.org/style/classicx/hdlogo.png" style="height:20px;width:92px;" title="HD-Torrents"></a>'
     // bhd
     p = p + ' <a target="_blank" class="bhd-search-link" href="https://beyond-hd.me/torrents?search=' + imdb_id + '" rel="noreferrer"><img src="https://beyond-hd.me/img/mainsitelogo4.png" style="height:20px;width:124px;" title="BeyondHD"></a>'
+    // fl
+    p = p + ' <a target="_blank" class="fl-search-link" href="https://filelist.io/browse.php?search=' + imdb_id + '" rel="noreferrer"><img src="https://filelist.io/styles/images/logo_blue.png" style="height:30px;width:67px;" title="FileList"></a>'
     p = p + '</p>'
     titleElement[0].innerHTML = p + titleElement[0].innerHTML
 }
