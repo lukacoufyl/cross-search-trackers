@@ -33,10 +33,14 @@ if(imdb_id){
     p = p + ' <a target="_blank" class="bhd-search-link" href="https://beyond-hd.me/torrents?search=' + imdb_id + '" rel="noreferrer"><img src="https://beyond-hd.me/img/mainsitelogo4.png" style="height:20px;width:124px;" title="BeyondHD"></a>'
     // blu
     p = p + ' <a target="_blank" class="blu-search-link" href="https://blutopia.xyz/torrents?imdbId=' + imdb_id + '" rel="noreferrer"><img src="https://blutopia.xyz/favicon.ico" style="height:30px;width:30px;" title="Blutopia"></a>'
+    // uhdb
+    p = p + ' <a target="_blank" class="uhdb-search-link" href="https://uhdbits.org/torrents.php?searchstr=' + imdb_id + '" rel="noreferrer"><img src="https://uhdbits.org/static/styles/navescent/images/logo.png" style="height:20px;width:45px;" title="UHDBits"></a>'
     // mtv
     p = p + ' <a target="_blank" class="mtv-search-link" href="https://www.morethantv.me/torrents/browse?searchtext=' + imdb_id + '" rel="noreferrer"><img src="https://www.morethantv.me/favicon.ico" style="height:30px;width:30px;" title="MoreThanTV"></a>'
     // fl
     p = p + ' <a target="_blank" class="fl-search-link" href="https://filelist.io/browse.php?search=' + imdb_id + '" rel="noreferrer"><img src="https://filelist.io/styles/images/logo_blue.png" style="height:30px;width:67px;" title="FileList"></a>'
+    // tl
+    p = p + ' <a target="_blank" class="tl-search-link" href="https://www.torrentleech.org/torrents/browse/index/query/' + imdb_id + '" rel="noreferrer"><img src="https://www.torrentleech.org/images/Tl_logo-White.png" style="height:20px;width:74px;" title="TorrentLeech"></a>'
     p = p + '</p>'
     titleElement[0].innerHTML = p + titleElement[0].innerHTML
 }
