@@ -14,6 +14,7 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 3. HDT
 4. FL
 5. MTV
-6. RARBG
+6. BLU
+7. RARBG
 
 i will try my naive aproach to add as many pages with imdb IDs as i can to integrate with this. lets begin.
