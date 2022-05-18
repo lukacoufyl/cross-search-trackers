@@ -31,6 +31,8 @@ if(imdb_id){
     p = p + ' <a target="_blank" class="hdt-search-link" href="https://hd-torrents.org/torrents.php?search=' + imdb_id + '" rel="noreferrer"><img src="https://hd-torrents.org/style/classicx/hdlogo.png" style="height:20px;width:92px;" title="HD-Torrents"></a>'
     // bhd
     p = p + ' <a target="_blank" class="bhd-search-link" href="https://beyond-hd.me/torrents?search=' + imdb_id + '" rel="noreferrer"><img src="https://beyond-hd.me/img/mainsitelogo4.png" style="height:20px;width:124px;" title="BeyondHD"></a>'
+    // blu
+    p = p + ' <a target="_blank" class="blu-search-link" href="https://blutopia.xyz/torrents?imdbId=' + imdb_id + '" rel="noreferrer"><img src="https://blutopia.xyz/favicon.ico" style="height:30px;width:30px;" title="Blutopia"></a>'
     // mtv
     p = p + ' <a target="_blank" class="mtv-search-link" href="https://www.morethantv.me/torrents/browse?searchtext=' + imdb_id + '" rel="noreferrer"><img src="https://www.morethantv.me/favicon.ico" style="height:30px;width:30px;" title="MoreThanTV"></a>'
     // fl
