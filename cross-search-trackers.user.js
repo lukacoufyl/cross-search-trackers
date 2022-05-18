@@ -3,6 +3,7 @@
 // @version      0.2
 // @description  cross search button with imdb links
 // @author       falafel
+// @namespace    https://github.com/lukacoufyl/cross-search-trackers
 // @match        https://passthepopcorn.me/torrents.php*
 // @grant        none
 // ==/UserScript==
