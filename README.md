@@ -8,7 +8,11 @@ i spend a whole lot of my time searching across trackers and checking whose rele
 
 im not gonna bother making it work with all the trackers, just the ones i would like to have.
 
-### for now it will contain:
+### site supports:
+1. PTP
+2. TBD
+
+search contains:
 1. PTP
 2. BHD
 3. HDT
