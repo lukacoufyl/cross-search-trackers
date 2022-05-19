@@ -7,25 +7,27 @@
 // @updateURL    https://github.com/lukacoufyl/cross-search-trackers/raw/main/cross-search-trackers.user.js
 // @downloadURL  https://github.com/lukacoufyl/cross-search-trackers/raw/main/cross-search-trackers.user.js
 // @match        https://passthepopcorn.me/torrents.php*
-// @match        https://www.torrentbd.com/torrents-details.php*
-// @match        https://www.torrentbd.net/torrents-details.php*
-// @match        https://www.torrentbd.me/torrents-details.php*
+// @match        https://www.torrentbd.com/*
+// @match        https://www.torrentbd.net/*
+// @match        https://www.torrentbd.me/*
 // @grant        none
 // ==/UserScript==
 
 function getIMDbID(currSite) {
     if(currSite == "tbd"){
         const ratingBlockElement = document.querySelector(".inl-rating-block")
-        let children = Array.from(ratingBlockElement.children);
-        let child; // don't forget to declare this variable
-        for(child in children){
-            if(children[child].getAttribute("data-tooltip") == "IMDb Rating"){
-                let imdbLink = children[child].childNodes[1].href
-                if(imdbLink.endsWith("/")){
-                    imdbLink = imdbLink.slice(0,-1)
+        if(ratingBlockElement){
+            let children = Array.from(ratingBlockElement.children);
+            let child; // don't forget to declare this variable
+            for(child in children){
+                if(children[child].getAttribute("data-tooltip") == "IMDb Rating"){
+                    let imdbLink = children[child].childNodes[1].href
+                    if(imdbLink.endsWith("/")){
+                        imdbLink = imdbLink.slice(0,-1)
+                    }
+                    const imdbID = imdbLink.split("/").pop()
+                    return imdbID
                 }
-                const imdbID = imdbLink.split("/").pop()
-                return imdbID
             }
         }
     }
@@ -41,7 +43,7 @@ function getIMDbID(currSite) {
         }
     }
     else if(currSite == "rarbg"){
-        const imdbElement = document.querySelector("#imdb-title-link")
+        // const imdbElement = document.querySelector("#imdb-title-link")
     }
     return null
 }
