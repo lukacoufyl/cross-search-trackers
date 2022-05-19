@@ -12,7 +12,7 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 1. PTP
 2. TBD
 
-search contains:
+### search contains:
 1. PTP
 2. BHD
 3. HDT
