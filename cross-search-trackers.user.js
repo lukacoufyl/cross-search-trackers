@@ -63,6 +63,10 @@ if(imdbID){
     let p = '<p>'
     // rarbg
     p = p + '<a target="_blank" class="rarbg-search-link" href="https://rarbgaccess.org/torrents.php?search=' + imdbID + '" rel="noreferrer"><img src="https://dyncdn.me/static/20/img/logo_dark_nodomain2_optimized.png" style="height:20px;width:54px;" title="RARBG"></a>'
+    if(currSite != "ptp"){
+        // ptp
+        p = p + ' <a target="_blank" class="ptp-search-link" href="https://passthepopcorn.me/torrents.php?searchstr=' + imdbID + '" rel="noreferrer"><img src="https://passthepopcorn.me/static/common/touch-icon-iphone.png" style="height:30px;width:30x;" title="PassThePopcorn"></a>'
+    }
     // hdt
     p = p + ' <a target="_blank" class="hdt-search-link" href="https://hd-torrents.org/torrents.php?search=' + imdbID + '" rel="noreferrer"><img src="https://hd-torrents.org/style/classicx/hdlogo.png" style="height:20px;width:92px;" title="HD-Torrents"></a>'
     // bhd
