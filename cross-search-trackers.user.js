@@ -4,6 +4,8 @@
 // @description  cross search button with imdb links
 // @author       falafel
 // @namespace    https://github.com/lukacoufyl/cross-search-trackers
+// @updateURL    https://github.com/lukacoufyl/cross-search-trackers/raw/main/cross-search-trackers.user.js
+// @downloadURL  https://github.com/lukacoufyl/cross-search-trackers/raw/main/cross-search-trackers.user.js
 // @match        https://passthepopcorn.me/torrents.php*
 // @match        https://www.torrentbd.com/torrents-details.php*
 // @match        https://www.torrentbd.net/torrents-details.php*
@@ -38,6 +40,9 @@ function getIMDbID(currSite) {
             return imdbID
         }
     }
+    else if(currSite == "rarbg"){
+        const imdbElement = document.querySelector("#imdb-title-link")
+    }
     return null
 }
 
@@ -51,6 +56,9 @@ if(currURL.includes("torrentbd")){
 else if(currURL.includes("passthepopcorn")){
     currSite = "ptp"
 }
+else if(currURL.includes("rarbg")){
+    currSite = "rarbg"
+}
 const imdbID = getIMDbID(currSite);
 if(imdbID){
     let titleElement = null
@@ -62,7 +70,7 @@ if(imdbID){
     }
     let p = '<p>'
     // rarbg
-    p = p + '<a target="_blank" class="rarbg-search-link" href="https://rarbgaccess.org/torrents.php?search=' + imdbID + '" rel="noreferrer"><img src="https://dyncdn.me/static/20/img/logo_dark_nodomain2_optimized.png" style="height:20px;width:54px;" title="RARBG"></a>'
+    p = p + '<a target="_blank" class="rarbg-search-link" href="https://rarbgaccess.org/torrents.php?imdb=' + imdbID + '" rel="noreferrer"><img src="https://dyncdn.me/static/20/img/logo_dark_nodomain2_optimized.png" style="height:20px;width:54px;" title="RARBG"></a>'
     if(currSite != "ptp"){
         // ptp
         p = p + ' <a target="_blank" class="ptp-search-link" href="https://passthepopcorn.me/torrents.php?searchstr=' + imdbID + '" rel="noreferrer"><img src="https://passthepopcorn.me/static/common/touch-icon-iphone.png" style="height:30px;width:30x;" title="PassThePopcorn"></a>'
@@ -80,7 +88,7 @@ if(imdbID){
     // fl
     p = p + ' <a target="_blank" class="fl-search-link" href="https://filelist.io/browse.php?search=' + imdbID + '" rel="noreferrer"><img src="https://filelist.io/styles/images/logo_blue.png" style="height:30px;width:67px;" title="FileList"></a>'
     // tl
-    p = p + ' <a target="_blank" class="tl-search-link" href="https://www.torrentleech.org/torrents/browse/index/query/' + imdbID + '" rel="noreferrer"><img src="https://www.torrentleech.org/images/Tl_logo-White.png" style="height:20px;width:74px;" title="TorrentLeech"></a>'
+    p = p + ' <a target="_blank" class="tl-search-link" href="https://www.torrentleech.org/torrents/browse/index/imdbID/' + imdbID + '" rel="noreferrer"><img src="https://www.torrentleech.org/images/Tl_logo-White.png" style="height:20px;width:74px;" title="TorrentLeech"></a>'
     p = p + '</p>'
     if(currSite == "tbd"){
         titleElement[0].outerHTML = '<div>' + p + '</div> <p></p> <hr> <p></p>' + titleElement[0].innerHTML
