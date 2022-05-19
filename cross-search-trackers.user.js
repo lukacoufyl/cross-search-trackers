@@ -7,6 +7,7 @@
 // @match        https://passthepopcorn.me/torrents.php*
 // @match        https://www.torrentbd.com/torrents-details.php*
 // @match        https://www.torrentbd.net/torrents-details.php*
+// @match        https://www.torrentbd.me/torrents-details.php*
 // @grant        none
 // ==/UserScript==
 
@@ -55,7 +56,6 @@ if(imdbID){
     let titleElement = null
     if(currSite == "tbd"){
         titleElement = $('div.inl-rating-block');
-        //titleElement[0].innerHTML = '<p>"\n"</p><hr><p>"\n"</p>' + titleElement[0].innerHTML
     }
     else if(currSite == "ptp"){
         titleElement = $('div.linkbox');
