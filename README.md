@@ -10,8 +10,9 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 
 ### site supports:
 1. PTP
-2. TBD
-3. HDT
+2. BHD
+3. TBD
+4. HDT
 
 ### search contains:
 1. PTP
