@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         cross-search-trackers
-// @version      0.2.2
+// @namespace    https://lukacoufyl.github.io/cross-search-trackers/
+// @version      0.2.3
 // @description  cross search button with imdb links
 // @author       falafel
-// @namespace    https://github.com/lukacoufyl/cross-search-trackers
-// @updateURL    https://github.com/lukacoufyl/cross-search-trackers/raw/main/cross-search-trackers.user.js
-// @downloadURL  https://github.com/lukacoufyl/cross-search-trackers/raw/main/cross-search-trackers.user.js
+// @updateURL    https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js
+// @downloadURL  https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js
 // @match        https://passthepopcorn.me/torrents.php*
 // @match        https://www.torrentbd.com/*
 // @match        https://www.torrentbd.net/*
@@ -14,6 +14,7 @@
 // @match        https://hd-torrents.net/details.php*
 // @match        https://hd-torrents.me/details.php*
 // @match        https://hdts.ru/details.php*
+// @icon         https://ptpimg.me/3068n1.png
 // @grant        none
 // ==/UserScript==
 
