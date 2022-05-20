@@ -28,5 +28,5 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 i will try my naive aproach to add as many pages with imdb IDs as i can to integrate with this. lets begin.
 
 ### how to use
-download the userscript from [https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js](here).
+download the userscript from [here](https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js).
 add it in your browser's tampermonkey extension.
