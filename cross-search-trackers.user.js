@@ -16,6 +16,14 @@
 // @match        https://hdts.ru/details.php*
 // @match        https://beyond-hd.me/torrents*
 // @match        https://beyond-hd.me/library*
+// @match        https://rarbgaccess.org/torrents.php?imdb*
+// @match        https://www.proxyrarbg.org/torrents.php?imdb*
+// @match        https://rarbgtor.org/torrents.php?imdb*
+// @match        https://rarbgto.org/torrents.php?imdb*
+// @match        https://rarbgaccess.org/torrent/*
+// @match        https://www.proxyrarbg.org/torrent/*
+// @match        https://rarbgtor.org/torrent/*
+// @match        https://rarbgto.org/torrent/*
 // @icon         https://ptpimg.me/3068n1.png
 // @grant        none
 // ==/UserScript==
@@ -50,7 +58,29 @@ function getIMDbID(currSite) {
         }
     }
     else if(currSite == "rarbg"){
-        // const imdbElement = document.querySelector("#imdb-title-link")
+        if(currURL.includes("imdb")){
+            let imdbLink = currURL
+            if(imdbLink.endsWith("/")){
+                imdbLink = imdbLink.slice(0,-1)
+            }
+            const imdbID = imdbLink.split("=").pop()
+            return imdbID
+        }
+        else{
+            let lista = $('td.lista')
+            for(let i=0; i<lista.length; i++){
+                if(lista[i].innerHTML.includes("imdb")){
+                    if(lista[i].children[0].href.includes("imdb")){
+                        let imdbLink = lista[i].children[0].href
+                        if(imdbLink.endsWith("/")){
+                            imdbLink = imdbLink.slice(0,-1)
+                        }
+                        const imdbID = imdbLink.split("/").pop()
+                        return imdbID
+                    }
+                }
+            }
+        }
     }
     else if(currSite == "hdt"){
         const imdbElement = document.querySelector("#IMDBDetailsInfoHideShowTR")
@@ -117,9 +147,14 @@ if(imdbID){
     else if(currSite == "bhd"){
         titleElement = $('div.hd-table')
     }
+    else if(currSite == "rarbg"){
+        titleElement = $('h1.black')
+    }
     let p = ''
-    // rarbg
-    p = p + '<a target="_blank" class="rarbg-search-link" href="https://rarbgaccess.org/torrents.php?imdb=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/2d5xqr.png" style="height:20px;width:54px;" title="RARBG"></a>'
+    if(currSite != "rarbg"){
+        // rarbg
+        p = p + '<a target="_blank" class="rarbg-search-link" href="https://rarbgaccess.org/torrents.php?imdb=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/2d5xqr.png" style="height:20px;width:54px;" title="RARBG"></a>'
+    }
     if(currSite != "ptp"){
         // ptp
         p = p + ' <a target="_blank" class="ptp-search-link" href="https://passthepopcorn.me/torrents.php?searchstr=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/fw83j6.png" style="height:30px;width:30x;" title="PassThePopcorn"></a>'
@@ -155,5 +190,8 @@ if(imdbID){
     }
     else if(currSite == "bhd"){
         titleElement[0].outerHTML = titleElement[0].outerHTML + '<div>' + p + '</div>'
+    }
+    else if(currSite == "rarbg"){
+        titleElement[0].outerHTML = titleElement[0].outerHTML + '<p>' + p + '</p>'
     }
 }
