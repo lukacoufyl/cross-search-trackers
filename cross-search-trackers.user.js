@@ -14,6 +14,8 @@
 // @match        https://hd-torrents.net/details.php*
 // @match        https://hd-torrents.me/details.php*
 // @match        https://hdts.ru/details.php*
+// @match        https://beyond-hd.me/torrents*
+// @match        https://beyond-hd.me/library*
 // @icon         https://ptpimg.me/3068n1.png
 // @grant        none
 // ==/UserScript==
@@ -61,6 +63,22 @@ function getIMDbID(currSite) {
             return imdbID
         }
     }
+    else if(currSite == "bhd"){
+        const imdbElement = document.querySelector(".hd-table")
+        if(imdbElement){
+            let imdbElementChildren = imdbElement.children[1].children
+            for (let i = 0; i < imdbElementChildren.length; i++){
+                if(imdbElementChildren[i].title.includes("IMDb")){
+                    let imdbLink = imdbElementChildren[i].children[0].href
+                    if(imdbLink.endsWith("/")){
+                        imdbLink = imdbLink.slice(0,-1)
+                    }
+                    const imdbID = imdbLink.split("/").pop()
+                    return imdbID
+                }
+            }
+        }
+    }
     return null
 }
 
@@ -80,6 +98,9 @@ else if(currURL.includes("rarbg")){
 else if(currURL.includes("hd-torrents") || currURL.includes("hdts")){
     currSite = "hdt"
 }
+else if(currURL.includes("beyond-hd")){
+    currSite = "bhd"
+}
 const imdbID = getIMDbID(currSite);
 if(imdbID){
     let titleElement = null
@@ -93,6 +114,9 @@ if(imdbID){
         titleElement = $('table.listadetails')
         titleElement = titleElement[0].children
     }
+    else if(currSite == "bhd"){
+        titleElement = $('div.hd-table')
+    }
     let p = ''
     // rarbg
     p = p + '<a target="_blank" class="rarbg-search-link" href="https://rarbgaccess.org/torrents.php?imdb=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/2d5xqr.png" style="height:20px;width:54px;" title="RARBG"></a>'
@@ -104,8 +128,10 @@ if(imdbID){
         // hdt
         p = p + ' <a target="_blank" class="hdt-search-link" href="https://hd-torrents.org/torrents.php?search=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/5t0a01.png" style="height:20px;width:92px;" title="HD-Torrents"></a>'
     }
-    // bhd
-    p = p + ' <a target="_blank" class="bhd-search-link" href="https://beyond-hd.me/torrents?search=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/bxcd1o.png" style="height:20px;width:124px;" title="BeyondHD"></a>'
+    if(currSite != "bhd"){
+        // bhd
+        p = p + ' <a target="_blank" class="bhd-search-link" href="https://beyond-hd.me/torrents?search=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/bxcd1o.png" style="height:20px;width:124px;" title="BeyondHD"></a>'
+    }
     // blu
     p = p + ' <a target="_blank" class="blu-search-link" href="https://blutopia.xyz/torrents?imdbId=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/8e8u62.png" style="height:30px;width:30px;" title="Blutopia"></a>'
     // uhdb
@@ -119,12 +145,15 @@ if(imdbID){
     // tl
     p = p + ' <a target="_blank" class="tl-search-link" href="https://www.torrentleech.org/torrents/browse/index/imdbID/' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/q8s6g4.png" style="height:20px;width:74px;" title="TorrentLeech"></a>'
     if(currSite == "tbd"){
-        titleElement[0].outerHTML = '<div>' + p + '</div> <p></p> <hr> <p></p>' + titleElement[0].innerHTML
+        titleElement[0].outerHTML = '<div>' + p + '</div> <p></p> <hr> <p></p>' + titleElement[0].outerHTML
     }
     else if(currSite == "ptp"){
         titleElement[0].innerHTML = '<p>' + p + '</p>' + titleElement[0].innerHTML
     }
     else if(currSite == "hdt"){
         titleElement[0].innerHTML = '<tr><td align="right" class="detailsleft"> Other Trackers:</td><td class="detailsright" align="center">' + p + '</td></tr>' + titleElement[0].innerHTML
+    }
+    else if(currSite == "bhd"){
+        titleElement[0].outerHTML = titleElement[0].outerHTML + '<div>' + p + '</div>'
     }
 }
