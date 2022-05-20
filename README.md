@@ -13,6 +13,7 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 2. BHD
 3. TBD
 4. HDT
+5. RARBG
 
 ### search contains:
 1. PTP
