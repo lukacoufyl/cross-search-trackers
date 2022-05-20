@@ -11,6 +11,7 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 ### site supports:
 1. PTP
 2. TBD
+3. HDT
 
 ### search contains:
 1. PTP
@@ -21,6 +22,7 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 6. BLU
 7. UHDB
 8. TL
-9. RARBG
+9. KG
+10. RARBG
 
 i will try my naive aproach to add as many pages with imdb IDs as i can to integrate with this. lets begin.
