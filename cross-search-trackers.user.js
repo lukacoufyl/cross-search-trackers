@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         cross-search-trackers
 // @namespace    https://lukacoufyl.github.io/cross-search-trackers/
-// @version      0.2.3
+// @version      0.2.4
 // @description  cross search button with imdb links
 // @author       falafel
 // @updateURL    https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js
@@ -24,6 +24,7 @@
 // @match        https://www.proxyrarbg.org/torrent/*
 // @match        https://rarbgtor.org/torrent/*
 // @match        https://rarbgto.org/torrent/*
+// @match        https://telly.wtf/torrents/*
 // @icon         https://ptpimg.me/3068n1.png
 // @grant        none
 // ==/UserScript==
@@ -109,6 +110,22 @@ function getIMDbID(currSite) {
             }
         }
     }
+    else if(currSite == "telly"){
+        const movDet = $('div.movie-details')
+        if(movDet){
+            let movDetChildren = movDet[0].children
+            for (let i = 0; i < movDetChildren.length; i++){
+                if(movDetChildren[i].innerHTML.includes("imdb")){
+                    let imdbLink = movDetChildren[i].children[0].href
+                    if(imdbLink.endsWith("/")){
+                        imdbLink = imdbLink.slice(0,-1)
+                    }
+                    const imdbID = imdbLink.split("/").pop()
+                    return imdbID
+                }
+            }
+        }
+    }
     return null
 }
 
@@ -131,6 +148,9 @@ else if(currURL.includes("hd-torrents") || currURL.includes("hdts")){
 else if(currURL.includes("beyond-hd")){
     currSite = "bhd"
 }
+else if(currURL.includes("telly")){
+    currSite = "telly"
+}
 const imdbID = getIMDbID(currSite);
 if(imdbID){
     let titleElement = null
@@ -149,6 +169,9 @@ if(imdbID){
     }
     else if(currSite == "rarbg"){
         titleElement = $('h1.black')
+    }
+    else if(currSite == "telly"){
+        titleElement = $('h1.movie-heading')
     }
     let p = ''
     if(currSite != "rarbg"){
@@ -193,5 +216,8 @@ if(imdbID){
     }
     else if(currSite == "rarbg"){
         titleElement[0].outerHTML = titleElement[0].outerHTML + '<p>' + p + '</p>'
+    }
+    else if(currSite == "telly"){
+        titleElement[0].outerHTML = titleElement[0].outerHTML + '<div class="other-trackers">' + p + '</div>'
     }
 }
