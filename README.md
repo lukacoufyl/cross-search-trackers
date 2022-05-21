@@ -18,15 +18,16 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 
 ### search contains:
 1. PTP
-2. BHD
-3. HDT
-4. FL
-5. MTV
-6. BLU
-7. UHDB
-8. TL
-9. KG
-10. RARBG
+2. TBD
+3. BHD
+4. HDT
+5. FL
+6. MTV
+7. BLU
+8. UHDB
+9. TL
+10. KG
+11. RARBG
 
 i will try my naive aproach to add as many pages with imdb IDs as i can to integrate with this. lets begin.
 
