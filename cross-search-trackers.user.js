@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         cross-search-trackers
 // @namespace    https://lukacoufyl.github.io/cross-search-trackers/
-// @version      0.2.3
+// @version      0.2.5
 // @description  cross search button with imdb links
 // @author       falafel
 // @updateURL    https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js
