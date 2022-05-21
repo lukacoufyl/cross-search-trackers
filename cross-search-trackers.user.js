@@ -1,15 +1,21 @@
 // ==UserScript==
 // @name         cross-search-trackers
 // @namespace    https://lukacoufyl.github.io/cross-search-trackers/
-// @version      0.2.4
+// @version      0.2.3
 // @description  cross search button with imdb links
 // @author       falafel
 // @updateURL    https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js
 // @downloadURL  https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js
 // @match        https://passthepopcorn.me/torrents.php*
-// @match        https://www.torrentbd.com/*
-// @match        https://www.torrentbd.net/*
-// @match        https://www.torrentbd.me/*
+// @match        https://www.torrentbd.com/torrents-details.php*
+// @match        https://www.torrentbd.net/torrents-details.php*
+// @match        https://www.torrentbd.me/torrents-details.php*
+// @match        https://www.torrentbd.com/movies.php*
+// @match        https://www.torrentbd.net/movies.php*
+// @match        https://www.torrentbd.me/movies.php*
+// @match        https://www.torrentbd.com/tv.php*
+// @match        https://www.torrentbd.net/tv.php*
+// @match        https://www.torrentbd.me/tv.php*
 // @match        https://hd-torrents.org/details.php*
 // @match        https://hd-torrents.net/details.php*
 // @match        https://hd-torrents.me/details.php*
@@ -177,6 +183,10 @@ if(imdbID){
     if(currSite != "rarbg"){
         // rarbg
         p = p + '<a target="_blank" class="rarbg-search-link" href="https://rarbgaccess.org/torrents.php?imdb=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/2d5xqr.png" style="height:20px;width:54px;" title="RARBG"></a>'
+    }
+    if(currSite != "tbd"){
+        // tbd
+        p = p + '<a target="_blank" class="tbd-search-link" href="https://www.torrentbd.com/movies.php?module=torrents&id=' + imdbID + '" rel="noreferrer"><img src="https://ptpimg.me/x312kc.png" style="height:20px;width:96px;" title="TorrentBD"></a>'
     }
     if(currSite != "ptp"){
         // ptp
