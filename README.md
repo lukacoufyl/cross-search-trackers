@@ -15,6 +15,7 @@ im not gonna bother making it work with all the trackers, just the ones i would 
 4. HDT
 5. RARBG
 6. Telly
+7. IPT
 
 ### search contains:
 1. PTP
