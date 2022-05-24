@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         cross-search-trackers
 // @namespace    https://lukacoufyl.github.io/cross-search-trackers/
-// @version      0.2.5.1
+// @version      0.2.6
 // @description  cross search button with imdb links
 // @author       falafel
 // @updateURL    https://lukacoufyl.github.io/cross-search-trackers/cross-search-trackers.user.js
@@ -32,6 +32,8 @@
 // @match        https://rarbgtor.org/torrent/*
 // @match        https://rarbgto.org/torrent/*
 // @match        https://telly.wtf/torrents/*
+// @match        https://ipt.cool/torrent.php?id=*
+// @match        https://ipt.lol/torrent.php?id=*
 // @icon         https://ptpimg.me/3068n1.png
 // @grant        none
 // ==/UserScript==
@@ -133,6 +135,19 @@ function getIMDbID(currSite) {
             }
         }
     }
+    else if(currSite == "ipt"){
+        const movDet = $('div.main')
+        if(movDet){
+            let movDetTable = movDet[0].children[0].children[0]
+            let movDetTableCount = movDetTable.childElementCount - 1
+            let imdbLink = movDetTable.children[movDetTableCount].children[1].children[0].href
+            if(imdbLink.endsWith("/")){
+                imdbLink = imdbLink.slice(0,-1)
+            }
+            const imdbID = imdbLink.split("/").pop()
+            return imdbID
+        }
+    }
     return null
 }
 
@@ -158,6 +173,9 @@ else if(currURL.includes("beyond-hd")){
 else if(currURL.includes("telly")){
     currSite = "telly"
 }
+else if(currURL.includes("ipt")){
+    currSite = "ipt"
+}
 const imdbID = getIMDbID(currSite);
 if(imdbID){
     let titleElement = null
@@ -179,6 +197,10 @@ if(imdbID){
     }
     else if(currSite == "telly"){
         titleElement = $('h1.movie-heading')
+    }
+    else if(currSite == "ipt"){
+        titleElement = $('div.main')
+        titleElement = titleElement[0].children[0].children[0].children
     }
     let p = ''
     if(currSite != "rarbg"){
@@ -230,5 +252,8 @@ if(imdbID){
     }
     else if(currSite == "telly"){
         titleElement[0].outerHTML = titleElement[0].outerHTML + '<div class="other-trackers">' + p + '</div>'
+    }
+    else if(currSite == "ipt"){
+        titleElement[0].outerHTML = titleElement[0].outerHTML + '<tr><td colspan="2" class="other-trackers">' + p + '</td></tr>'
     }
 }
