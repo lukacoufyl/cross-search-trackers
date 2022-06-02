@@ -1,4 +1,16 @@
 site_name: cross-search-trackers
 theme:
   name: material
-
+  font:
+    text: Kanit
+    code: Ubuntu Mono
+  palette: 
+    scheme: slate
+    primary: amber
+    accent: deep orange
+  features:
+    - header.autohide
+  icon:
+    repo: fontawesome/brands/github
+repo_url: https://github.com/lukacoufyl/cross-search-trackers
+repo_name: lukacoufyl/cross-search-trackers
