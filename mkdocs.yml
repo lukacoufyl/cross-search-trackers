@@ -5,9 +5,18 @@ theme:
     text: Kanit
     code: Ubuntu Mono
   palette: 
-    scheme: slate
-    primary: amber
-    accent: deep orange
+	- scheme: default
+	  primary: amber
+      accent: deep orange
+      toggle:
+        icon: material/toggle-switch 
+        name: Switch to dark mode
+    - scheme: slate 
+	  primary: amber
+      accent: deep orange
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
   features:
     - header.autohide
   icon:
